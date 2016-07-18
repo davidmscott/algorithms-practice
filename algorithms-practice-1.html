@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// create a function that takes in an array as a parameter
+		function modeOfArray(numarray) {
+
+			// create variables to use
+			var numbers = [], frequency = [], mode = [], maxfreq = 0;
+
+			// count the occurance of the numbers in the array
+			for (var i = 0; i < numarray.length; i++) {
+				if (numbers.indexOf(numarray[i]) === -1) {
+					numbers.push(numarray[i]);
+					frequency.push(1);
+				} else {
+					frequency[numbers.indexOf(numarray[i])]++;
+				}
+			}
+
+			// determine the modes of the array
+			for (i = 0; i < frequency.length; i++) {
+				if (frequency[i] === maxfreq) {
+					mode.push(numbers[i]);
+				}
+				if (frequency[i] > maxfreq) {
+					maxfreq = frequency[i];
+					mode = [numbers[i]];
+				}
+			}
+
+			// return the modes
+			return mode;
+
+		}
+
+	</script>
+
+</body>
+</html>

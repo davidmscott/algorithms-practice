@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// generates an array of 10 unique random numbers between 1 and 100
+		function randomArray() {
+			var randomarray = [], random, duplicate = true;
+			for (var i = 0; i < 10; i++) {
+				duplicate = true;
+				while (duplicate) {
+					random = Math.ceil(Math.random() * 100);
+					if (randomarray.indexOf(random) === -1) {
+						randomarray.push(random);
+						duplicate = false;
+					}
+				}
+			}
+
+			return randomarray;
+
+		}
+
+	</script>
+
+</body>
+</html>

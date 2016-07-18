@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// removes duplicate values from an array
+		function removeDuplicates(array) {
+			var numlist = [];
+
+			for (var i = 0; i < array.length; i++) {
+				if (numlist.indexOf(array[i]) === -1) {
+					numlist.push(array[i]);
+				} else {
+					array.splice(i,1);
+					i--;
+				}
+			}
+
+			return array;
+
+		}
+
+	</script>
+
+</body>
+</html>

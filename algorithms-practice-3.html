@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// returns the lowest positive missing integer from an array
+		function firstMissingInt(array) {
+			var i = 1;
+			while (true) {
+				if (array.indexOf(i) === -1) {
+					return i;
+				}
+				i++;
+			}
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// Translate english into pig latin
+		function engToPigLatin(string) {
+			// make the string lower case
+			string = string.toLowerCase();
+			// split string into separte words
+			var wordarray = string.split(" ");
+			// split words into separate letters
+			for (var i = 0; i < wordarray.length; i++) {
+				wordarray[i] = wordarray[i].split("");
+			}
+			// move the first letter to the end of the word
+			for (i = 0; i < wordarray.length; i++) {
+				wordarray[i].push(wordarray[i][0]);
+				wordarray[i].splice(0, 1);
+				// add "ay" to the end of the word
+				wordarray[i].push("ay");
+				// capitalize the first letter
+				if (i === 0) {
+					wordarray[i][0] = wordarray[i][0].toUpperCase();
+				}
+				// join letters back into words
+				wordarray[i] = wordarray[i].join("");
+			}
+			// join words back together with a space in between
+			return wordarray.join(" ");
+		}
+
+		// Translate pig latin to english
+		function pigLatinToEng(string) {
+			// make the string lower case
+			string = string.toLowerCase();
+			// split string into separte words
+			var wordarray = string.split(" ");
+			// split words into separate letters
+			for (var i = 0; i < wordarray.length; i++) {
+				wordarray[i] = wordarray[i].split("");
+			}
+			// remove the "ay" from the end of each word
+			for (i = 0; i < wordarray.length; i++) {
+				wordarray[i].pop();
+				wordarray[i].pop();
+				// move the last letter of each word to be the first letter
+				wordarray[i].splice(0, 0, wordarray[i][wordarray[i].length - 1]);
+				wordarray[i].pop();
+				// capitalize the first letter
+				if (i === 0) {
+					wordarray[i][0] = wordarray[i][0].toUpperCase();
+				}
+				// join letters back into words
+				wordarray[i] = wordarray[i].join("");
+			}
+			// join words back together with a space in between
+			return wordarray.join(" ");
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		function letterPairs(string) {
+			// declare a bunch of variables
+			var array = [], pairarray = [], checkedarray = [], checkedarraycount = [], i, j, count, tempcount, temppair, outputstr, totalpairs;
+			// make string all lowercase
+			string = string.toLowerCase();
+			// turn string into array
+			array = string.split("");
+			// create an array of arrays containing 2 consecutive characters from first array
+			for (i = 0; i < array.length - 1; i++) {
+				pairarray[i] = [];
+			}
+			for (i = 0; i < array.length - 1; i++) {
+				pairarray[i][0] = array[i];
+				pairarray[i][1] = array[i + 1];
+			}
+			// delete any 2 character arrays that contain " " or "."
+			for (i = 0; i < pairarray.length; i++) {
+				if (pairarray[i][0] === " " || pairarray[i][1] === " " || pairarray[i][0] === "." || pairarray[i][1] === "." || pairarray[i][0] === "," || pairarray[i][1] === "," || pairarray[i][0] === "'" || pairarray[i][1] === "'" || pairarray[i][0] === '"' || pairarray[i][1] === '"' || pairarray[i][0] === "(" || pairarray[i][1] === "(" || pairarray[i][0] === ")" || pairarray[i][1] === ")") {
+					pairarray.splice(i, 1);
+					i--;
+				}
+			}
+			// join the 2 one-character arrays into 1 two-character arrays
+			for (i = 0; i < pairarray.length; i++) {
+				pairarray[i] = pairarray[i].join("");
+			}
+			totalpairs = pairarray.length;
+			// cycle through the arrays to count the occurance of each combination; keeping track of combos already tested
+			for (i = 0; i < pairarray.length; i++) {
+				if (checkedarray.indexOf(pairarray[i]) === -1) {
+					checkedarray.push(pairarray[i]);
+					count = 0;
+					for (j = 0; j < pairarray.length; j++) {
+						if (pairarray[j] === pairarray[i]) {
+							count++;
+						}
+					}
+					checkedarraycount.push(count);
+				}
+			}
+			// sort by most occurances and list the 10 highest as a percentage of total (bubble sort until no more sorting needed)
+			for (i = 0; i < Math.min(10, checkedarraycount.length); i++) {
+				for (j = 0; j < checkedarraycount.length - i; j++) {
+					if (checkedarraycount[j] > checkedarraycount[j + 1]) {
+						tempcount = checkedarraycount[j];
+						temppair = checkedarray[j];
+						checkedarraycount[j] = checkedarraycount[j + 1];
+						checkedarray[j] = checkedarray[j + 1];
+						checkedarraycount[j + 1] = tempcount;
+						checkedarray[j + 1] = temppair;
+					}
+				}
+			}
+			outputstr = "";
+			for (i = 0; i < Math.min(10, checkedarraycount.length); i++) {
+				outputstr += checkedarray[checkedarray.length - i - 1] + " : " + (checkedarraycount[checkedarraycount.length - i - 1] / totalpairs * 100).toFixed(2) + "%\n";
+			}
+			console.log(outputstr || "There are no letter pairs.");
+		}
+
+	</script>
+
+</body>
+</html>

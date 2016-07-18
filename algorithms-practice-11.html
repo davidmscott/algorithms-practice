@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		function encodeSquare(message, col) {
+			var array, arrayencode = [], i, j, currentcol, currentrow;
+			// remove spaces from message
+			message = message.replace(/\s/g,"");
+			// turn message into an array
+			array = message.split("");
+			// determine an appropriate size to container for message
+			col = col || Math.ceil(Math.sqrt(array.length));
+			row = Math.ceil(array.length / col);
+			// create encoded array
+			for (i = 0; i < row; i++) {
+				arrayencode[i] = [];
+			}
+			i = 0;
+			currentcol = 0;
+			currentrow = 0;
+			while (i < array.length) {
+				arrayencode[currentrow][currentcol] = array[i];
+				if (currentrow === row - 1) {
+					currentrow = 0;
+					currentcol++;
+				} else {
+					currentrow++;
+				}
+				i++;
+			}
+			// turn coded array into string
+			for (i = 0; i < arrayencode.length; i++) {
+				arrayencode[i] = arrayencode[i].join("");
+			}
+			return arrayencode.join(" ");
+		}
+
+		function decodeSquare(message) {
+			var array, i, row, col, arraydecode = [];
+			// turn message into an array of code words
+			array = message.split(" ");
+			// split strings in array into arrays of individual letters
+			for (i = 0; i < array.length; i++) {
+				array[i] = array[i].split("");
+			}
+			// loop through arrays until all characters have been added to arraydecode
+			i = 0;
+			row = 0;
+			col = 0;
+			while (array[col][row] !== undefined) {
+				arraydecode[i] = array[col][row];
+				if (col === array.length - 1) {
+					col = 0;
+					row++;
+				} else {
+					col++;
+				}
+				i++;
+			}
+			return arraydecode.join("");
+		}
+
+	</script>
+
+</body>
+</html>

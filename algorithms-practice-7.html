@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// caps the maximum value of each element at a maximum amount
+		function limitMaxElement(array,max) {
+			var newarray = [];
+			for (var i = 0; i < array.length; i++) {
+				if (array[i] < max) {
+					newarray.push(array[i]);
+				} else {
+					newarray.push(max);
+				}
+			}
+			return newarray;
+		}
+
+	</script>
+
+</body>
+</html>

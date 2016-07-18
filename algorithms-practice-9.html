@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		// combine 2 arrays and sort the resulting array
+		function combineAndOrder(array1, array2) {
+			var newarray = [], i;
+			for (i = 0; i < array1.length; i++) {
+				newarray.push(array1[i]);
+			}
+			for (i = 0; i < array2.length; i++) {
+				newarray.push(array2[i]);
+			}
+			return newarray.sort(function(a,b) {return a - b});
+		}
+
+	</script>
+
+</body>
+</html>

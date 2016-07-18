@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		function subarrayMaxSum(array) {
+			// create variables to store subarrays and sums
+			var sum, maxsum = 0, subarray, maxsubarray = [], i, j, k;
+			// create a for loop to cycle through the array at different starting indexes
+			for (i = 0; i < array.length; i++) {
+				// clear subarray and sum
+				subarray = [];
+				sum = 0;
+				// create a for loop to cycle through different ending indexes for each starting index
+				for (j = 0; j < array.length - i; j++) {
+					// build subarray and add sum
+					subarray.push(array[i + j]);
+					sum += subarray[j];
+					// compare sum to max sum and assign new maxsum and maxsubarray if necessary
+					if (sum === maxsum && subarray.length < maxsubarray.length) {
+						// clear maxsubarray
+						maxsubarray = [];
+						// pass subarray to maxsubarray by value
+						for (k = 0; k < subarray.length; k++) {
+							maxsubarray.push(subarray[k]);
+						}
+					}
+					if (sum > maxsum) {
+						maxsum = sum;
+						// clear maxsubarray
+						maxsubarray = [];
+						// pass subarray to maxsubarray by value
+						for (k = 0; k < subarray.length; k++) {
+							maxsubarray.push(subarray[k]);
+						}
+					}
+				}
+			}
+			return maxsubarray;
+		}
+
+	</script>
+
+</body>
+</html>
